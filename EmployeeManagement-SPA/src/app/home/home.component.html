@@ -1,0 +1,19 @@
+<div class="row mt-3">
+  <div class="col-sm-6">
+    <button class="btn btn-success mb-3" [routerLink]="['/employees/create']" routerLinkActive="router-link-active" >New Employee</button>
+    <form class="form-inline mb-3" #form="ngForm" (ngSubmit)="searchEmployees()" novalidate>
+      <div class="">
+        <input [(ngModel)]="employeeParams.lastName" name="lastName" type="text" class="form-control col-10 mr-1" placeholder="Search for an Employee" aria-label="Search for an Employee" aria-describedby="basic-addon2">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </form>
+    <div *ngFor="let employee of employees">
+      <span>{{ employee.firstName }} {{ employee.lastName }} - {{ employee.personalIdentity }} / {{ employee.manager.firstName }} {{ employee.manager.lastName }}</span>
+    </div>
+    <!--<app-managers-list></app-managers-list>-->
+  </div
+  >
+  <div class="col-sm-6">
+    <app-employees-list></app-employees-list>
+  </div>
+</div>

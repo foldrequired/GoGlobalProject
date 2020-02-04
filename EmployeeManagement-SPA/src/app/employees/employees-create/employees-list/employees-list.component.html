@@ -1,0 +1,39 @@
+<div class="col">
+      <div class="row table-responsive-lg">
+        <div class="form-group">
+            <h2>Managers</h2>
+          <select
+          class="form-control"
+          autocomplete="managerId"
+          (change)="loadEmployees($event.target.value)" [(ngModel)]="managerIdSelector"
+          >
+            <option *ngFor="let manager of managers" value="{{ manager.id }}">{{ manager.firstName }} {{ manager.lastName }}</option>
+          </select>
+          <div class="row mt-3">
+            <h1 class="col">Employees List</h1>
+          </div>
+        </div>
+        <table class="table w-100">
+          <thead>
+            <tr>
+              <th scope="col">FirstName</th>
+              <th scope="col">LastName</th>
+              <th scope="col">PID</th>
+              <th scope="col">Manager</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let employee of employees">
+            <tr>
+              <td class="align-middle">{{ employee.firstName }}</td>
+              <td class="align-middle">{{ employee.lastName }}</td>
+              <td class="align-middle">{{ employee.personalIdentity }}</td>
+              <td class="align-middle text-danger">{{ employee.manager.firstName }} {{ employee.manager.lastName }}</td>
+              <td class="align-middle text-right">
+                <button class="btn btn-primary" [routerLink]="['/employees', employee.id]" routerLinkActive="router-link-active" >Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
